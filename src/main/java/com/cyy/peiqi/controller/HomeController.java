@@ -24,7 +24,7 @@ public class HomeController {
 	@RequestMapping(value = "/adduser", method = RequestMethod.GET)
 	public String addUser(Model model) {
 		User user = new User();
-		user.setEmailId("marco.cao@ge.com");
+		user.setEmailId("marco.cao@abc.com");
 		user.setFirstName("Marco");
 		user.setLastName("Cao");
 		user.setPassword("abc123");

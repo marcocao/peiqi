@@ -2,32 +2,16 @@ package com.cyy.peiqi.dao;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.stereotype.Repository;
-
 import com.cyy.peiqi.domain.User;
 
-@Repository
-public class UserDao {
+public interface UserDao {
+	User findUserById(long id);
 
-	@Resource
-	private HibernateTemplate hibernateTemplate;
+	void saveUser(User user);
 
-	@Autowired
-	private SessionFactory sessionFactory;
+	void deleteUserById(long id);
 
-	public void saveUser(User user) {
-		Session session = sessionFactory.getCurrentSession();
-		session.save(user);
-	}
-
-	public List<User> getUsers() {
-		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from User").getResultList();
-	}
+	List<User> findAllUsers();
+	
+	User findUserByEmail(String email);
 }
